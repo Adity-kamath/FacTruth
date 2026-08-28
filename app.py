@@ -1,4 +1,4 @@
-"""Flask UI, JSON API, and optional Twilio WhatsApp webhook for facTruth."""
+"""Flask UI and JSON API."""
 
 from __future__ import annotations
 

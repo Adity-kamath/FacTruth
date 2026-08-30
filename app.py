@@ -1,8 +1,10 @@
-"""Flask UI and JSON API."""
+"""Flask UI, JSON API, and optional Twilio WhatsApp webhook for facTruth."""
 
 from __future__ import annotations
 
 import os
+import threading
+
 
 from flask import (
     Flask,
@@ -82,6 +84,25 @@ def request_too_large(_error):
     return jsonify(
         error="Request is too large."
     ), 413
+
+
+# ---------------------------------------------------------------------------
+# Start Telegram bot
+# ---------------------------------------------------------------------------
+
+def start_telegram_bot():
+
+    from Telegram_bot import main
+
+    main()
+
+
+telegram_thread = threading.Thread(
+    target=start_telegram_bot,
+    daemon=True
+)
+
+telegram_thread.start()
 
 # ---------------------------------------------------------------------------
 # Start server

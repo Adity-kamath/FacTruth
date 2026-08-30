@@ -220,7 +220,7 @@ def main():
         "facTruth Telegram bot is running..."
     )
 
-    application.run_polling()
+    application.run_polling(stop_signals=None)
 
 
 if __name__ == "__main__":
